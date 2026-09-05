@@ -5,6 +5,10 @@
 **Choose Language / Pilih Bahasa:**  
 [🇬🇧 English](#english) &bull; [🇮🇩 Bahasa Indonesia](#bahasa-indonesia)
 
+<br>
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adewanggar/portrait-video-enhancer/blob/main/portrait_video_enhancer_colab.ipynb)
+
 </div>
 
 ---
@@ -65,6 +69,7 @@ portrait-video-enhancer/
 ├── fix_basicsr.py          # Automatic compatibility patch for BasicSR on PyTorch 2.x
 ├── download_models.py      # Automated weights downloader with progress & resume
 ├── test_pipeline.py        # Self-contained extraction and reassembly test
+├── portrait_video_enhancer_colab.ipynb # Ready-to-run Google Colab Notebook (Free T4 GPU)
 ├── requirements.txt        # Minimal dependency list
 ├── run.bat                 # One-click launcher (sets up environment & port)
 ├── start.bat               # Shortcut launcher script
@@ -74,6 +79,20 @@ portrait-video-enhancer/
 ---
 
 ## Quickstart & Installation
+
+### ⚡ Run on Google Colab (Free Cloud GPU)
+If you don't have an RTX GPU locally, run the application directly on Google Colab:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adewanggar/portrait-video-enhancer/blob/main/portrait_video_enhancer_colab.ipynb)
+
+1. Open the notebook via the button above.
+2. Select **Runtime** > **Change runtime type** > **T4 GPU** (free tier).
+3. Run all cells sequentially.
+4. Open the public `*.gradio.live` link generated in the final cell.
+
+---
+
+### Local Installation
 
 ### 1. Requirements
 - **OS**: Windows 10/11
@@ -219,6 +238,7 @@ portrait-video-enhancer/
 ├── fix_basicsr.py          # Script otomatis perbaikan kompatibilitas BasicSR di PyTorch 2.x
 ├── download_models.py      # Pengunduh otomatis bobot model dengan resume & progres
 ├── test_pipeline.py        # Pengujian ekstraksi dan perakitan mandiri
+├── portrait_video_enhancer_colab.ipynb # Notebook Google Colab siap pakai (GPU T4 Gratis)
 ├── requirements.txt        # Daftar dependensi minimal
 ├── run.bat                 # Script peluncur satu klik (pengaturan env & port)
 ├── start.bat               # Shortcut peluncur aplikasi
@@ -228,6 +248,20 @@ portrait-video-enhancer/
 ---
 
 ## Panduan Mulai Cepat & Instalasi
+
+### ⚡ Menjalankan di Google Colab (GPU Cloud Gratis)
+Jika komputer Anda tidak memiliki GPU RTX, Anda dapat menjalankan seluruh aplikasi secara online di Google Colab:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/adewanggar/portrait-video-enhancer/blob/main/portrait_video_enhancer_colab.ipynb)
+
+1. Buka notebook melalui tombol di atas.
+2. Masuk ke **Runtime** > **Change runtime type** > pilih **T4 GPU** (layanan gratis).
+3. Jalankan seluruh cell secara berurutan.
+4. Buka tautan publik `*.gradio.live` yang muncul pada cell terakhir.
+
+---
+
+### Instalasi Lokal
 
 ### 1. Kebutuhan Sistem
 - **Sistem Operasi**: Windows 10/11

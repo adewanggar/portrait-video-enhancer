@@ -10,6 +10,8 @@ License: MIT
 """
 
 import os
+import sys
+import argparse
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -539,10 +541,21 @@ with gr.Blocks(title=t_def["title"], css=CUSTOM_CSS) as demo:
         )
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Portrait Video Enhancer")
+    parser.add_argument("--share", action="store_true", help="Enable Gradio public share link (e.g. for Google Colab)")
+    parser.add_argument("--port", type=int, default=7860, help="Port to run server on (default: 7860)")
+    parser.add_argument("--listen", action="store_true", help="Listen on 0.0.0.0 instead of 127.0.0.1")
+    args, _ = parser.parse_known_args()
+
+    is_colab = "COLAB_GPU" in os.environ or "google.colab" in sys.modules
+    share = args.share or is_colab or os.environ.get("GRADIO_SHARE", "0") == "1"
+    server_name = "0.0.0.0" if (args.listen or share or is_colab) else "127.0.0.1"
+
     demo.queue()
     demo.launch(
-        server_name="127.0.0.1",
-        server_port=7860,
-        inbrowser=True,
+        server_name=server_name,
+        server_port=args.port,
+        inbrowser=not is_colab,
+        share=share,
         theme=gr.themes.Default(primary_hue="orange"),
     )
