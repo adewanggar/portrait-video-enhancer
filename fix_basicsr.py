@@ -15,12 +15,13 @@ def apply_patches():
         import basicsr
         base_dir = os.path.dirname(basicsr.__file__)
     except Exception:
-        print("[INFO] basicsr is not installed yet. Installing with --no-build-isolation...")
+        print("[INFO] basicsr is not installed yet. Preparing environment with setuptools<70...")
         import subprocess
-        res = subprocess.run([sys.executable, "-m", "pip", "install", "basicsr", "--no-build-isolation"])
+        subprocess.run([sys.executable, "-m", "pip", "install", "setuptools<70"], check=False)
+        res = subprocess.run([sys.executable, "-m", "pip", "install", "basicsr"])
         if res.returncode != 0:
-            print("[INFO] Retrying basicsr installation from official github repository...")
-            subprocess.run([sys.executable, "-m", "pip", "install", "--no-build-isolation", "git+https://github.com/XPixelGroup/BasicSR.git"])
+            print("[INFO] Retrying with --no-build-isolation...")
+            subprocess.run([sys.executable, "-m", "pip", "install", "basicsr", "--no-build-isolation"])
         try:
             import basicsr
             base_dir = os.path.dirname(basicsr.__file__)

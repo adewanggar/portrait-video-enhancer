@@ -1,7 +1,7 @@
 # Portrait Video Enhancer Dependencies
 # Note: For CUDA-accelerated PyTorch, install with cu121/cu124 index if not already present:
 # pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
-# Note: In modern environments (e.g. Colab / PyTorch 2.x), run `pip install basicsr --no-build-isolation` before requirements.txt
+# Note: In modern environments (e.g. Colab / Python 3.10+), run `pip install "setuptools<70"` before installing basicsr
 
 basicsr>=1.4.2
 facexlib>=0.3.0
