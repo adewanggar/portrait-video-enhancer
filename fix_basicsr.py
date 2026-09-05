@@ -10,13 +10,26 @@ import sys
 
 def apply_patches():
     # 1. Patch main basicsr package
+    base_dir = None
     try:
         import basicsr
         base_dir = os.path.dirname(basicsr.__file__)
     except Exception:
-        base_dir = os.path.expanduser(r"~\AppData\Roaming\Python\Python310\site-packages\basicsr")
+        print("[INFO] basicsr is not installed yet. Installing with --no-build-isolation...")
+        import subprocess
+        res = subprocess.run([sys.executable, "-m", "pip", "install", "basicsr", "--no-build-isolation"])
+        if res.returncode != 0:
+            print("[INFO] Retrying basicsr installation from official github repository...")
+            subprocess.run([sys.executable, "-m", "pip", "install", "--no-build-isolation", "git+https://github.com/XPixelGroup/BasicSR.git"])
+        try:
+            import basicsr
+            base_dir = os.path.dirname(basicsr.__file__)
+        except Exception:
+            fallback = os.path.expanduser(r"~\AppData\Roaming\Python\Python310\site-packages\basicsr")
+            if os.path.exists(fallback):
+                base_dir = fallback
 
-    if os.path.exists(base_dir):
+    if base_dir and os.path.exists(base_dir):
         # Patch __init__.py
         init_path = os.path.join(base_dir, "__init__.py")
         safe_init = '''# BasicSR clean inference init
@@ -123,6 +136,8 @@ except Exception:
             with open(deg_path, "w", encoding="utf-8") as f:
                 f.write(deg_txt)
             print(f"[OK] Patched {deg_path}")
+    else:
+        print("[WARNING] Could not locate basicsr installation directory to patch.")
 
     # 2. Patch codeformer internal basicsr if present
     codeformer_dir = os.path.expanduser(r"~\AppData\Roaming\Python\Python310\site-packages\codeformer")
