@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary work directories & logs
+.temp_work/
+*.log
+*.tmp
+
+# Video output & test media
+*.mp4
+*.avi
+*.mov
+*.mkv
+*_preview.png
+
+# Model weights & large binaries (download via download_models.py)
+weights/
+gfpgan/
+*.pth
+*.pt
+*.pkl
+*.bin
+*.onnx
+*.engine
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

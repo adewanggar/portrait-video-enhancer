@@ -1,0 +1,12 @@
+# Portrait Video Enhancer Dependencies
+# Note: For CUDA-accelerated PyTorch, install with cu121/cu124 index if not already present:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+
+basicsr>=1.4.2
+facexlib>=0.3.0
+gfpgan>=1.3.8
+realesrgan>=0.3.0
+opencv-python>=4.7.0
+gradio>=4.0.0
+numpy
+tqdm
